@@ -12,6 +12,7 @@ def main():
         "Quantidade": None,
         "Tipo Ativo": None,
     }
+    data = []
 
     for idx_row, row in enumerate(ws.iter_rows(max_row=5), start=1):
         if idx_row == 1:
@@ -19,6 +20,12 @@ def main():
                 if cell.value in col_name:
                     col_name[cell.value] = cell.column_letter
             pprint(col_name)
+        else:
+            data_row = {}
+            for name, letter in col_name.items():
+                data_row[name] = ws[f'{letter}{idx_row}'].value
+            data.append(data_row)
+    pprint(data)
 
 
 if __name__ == '__main__':
