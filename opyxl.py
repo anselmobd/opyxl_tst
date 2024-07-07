@@ -7,11 +7,11 @@ class EquiqXlsx:
     def __init__(self, filename):
         self.filename = filename
 
-        self.col_id = {
-            "Descr. Sint.": None,
-            "Dt.Aquisicao": None,
-            "Quantidade": None,
-            "Tipo Ativo": None,
+        self.columns_idx = {
+            'Descr. Sint.': None,
+            'Dt.Aquisicao': None,
+            'Quantidade': None,
+            'Tipo Ativo': None,
         }
         self.data = []
 
@@ -20,24 +20,28 @@ class EquiqXlsx:
         self.ws = self.wb.active
 
     def get_col_id(self, row):
-        for cell in row:
-            if cell.value in self.col_id:
-                self.col_id[cell.value] = cell.column_letter
-        pprint(self.col_id)
+        for idx_col, cell in enumerate(row):
+            if cell.value in self.columns_idx:
+                self.columns_idx[cell.value] = idx_col
+        pprint(self.columns_idx)
 
-    def data_append_item(self, idx, row):
+    def data_append_item(self, idx_row, row):
         item = {}
-        for name, letter in self.col_id.items():
-            item[name] = self.ws[f'{letter}{idx}'].value
+        for name, idx_col in self.columns_idx.items():
+            item[name] = row[idx_col].value
         self.data.append(item)
+
+    def item_valido(self, row):
+        return not row[self.columns_idx['Tipo Ativo']].value
 
     def walk_through(self):
         for idx_row, row in enumerate(self.ws.iter_rows(max_row=5), start=1):
             if idx_row == 1:
                 self.get_col_id(row)
             else:
-                self.data_append_item(idx_row, row)
-    
+                if self.item_valido(row):
+                    self.data_append_item(idx_row, row)
+
     def print(self):
         pprint(self.data)
 
@@ -45,7 +49,6 @@ class EquiqXlsx:
         self.load()
         self.walk_through()
         self.print()
-    
 
 
 if __name__ == '__main__':
