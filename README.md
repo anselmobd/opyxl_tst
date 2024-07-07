@@ -8,25 +8,26 @@ O objetivo deste repositório é testar os recursos básicos da biblioteca openp
 A planilha ".xlsx" para utilizada neste teste é enconrada na web. Não há nenhum significado específico na escolha da planilha.
 
 Busca feita no Portal Brasileiro de Dados Abertos
-https://dados.gov.br
+
+- https://dados.gov.br
 
 A planilha escolhida se encontra em:
 
-Empresa Mato-Grossense de Tecnologia da Informação
+- Empresa Mato-Grossense de Tecnologia da Informação
 
-https://dados.gov.br/dados/organizacoes/visualizar/empresa-mato-grossense-de-tecnologia-da-informacao
+  - https://dados.gov.br/dados/organizacoes/visualizar/empresa-mato-grossense-de-tecnologia-da-informacao
 
-Bens Móveis e Imóveis
+- Bens Móveis e Imóveis
 
-https://dados.gov.br/dados/conjuntos-dados/bens-moveis-e-imoveis
+  - https://dados.gov.br/dados/conjuntos-dados/bens-moveis-e-imoveis
 
-XLSX - Computadores e Periféricos 2024
+- XLSX - Computadores e Periféricos 2024
 
-Listagem de Computadores e Periféricos de inventario 2024. 
+  - Listagem de Computadores e Periféricos de inventario 2024. 
 
-Nome original da planilha: "01.xlsx"
+  - Nome original da planilha: "01.xlsx"
 
-Renomeada para: "equipamentos.xlsx"
+  - Renomeada para: "equipamentos.xlsx"
 
 # Descrição do processamento
 
