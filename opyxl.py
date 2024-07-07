@@ -13,7 +13,23 @@ class EquiqXlsx:
             'Quantidade': None,
             'Tipo Ativo': None,
         }
+        self.columns_transform = {
+            'Descr. Sint.': {
+                'name': 'classe',
+                'transform': self.get_classe_descricao
+            },
+            'Dt.Aquisicao': {
+                'name': 'ano',
+                'transform': self.get_ano_data
+            },
+        }
         self.data = []
+
+    def get_classe_descricao(self, value):
+        return value
+
+    def get_ano_data(self, value):
+        return value
 
     def load(self):
         self.wb = load_workbook(filename=self.filename)
