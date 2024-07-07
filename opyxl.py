@@ -2,31 +2,37 @@ from openpyxl import load_workbook
 from pprint import pprint
 
 
-def main():
-    wb = load_workbook(filename = 'equipamentos.xlsx')
-    ws = wb.active
+class EquiqXlsx:
 
-    col_name = {
-        "Descr. Sint.": None,
-        "Dt.Aquisicao": None,
-        "Quantidade": None,
-        "Tipo Ativo": None,
-    }
-    data = []
+    def __init__(self, filename):
+        self.filename = filename
 
-    for idx_row, row in enumerate(ws.iter_rows(max_row=5), start=1):
-        if idx_row == 1:
-            for cell in row:
-                if cell.value in col_name:
-                    col_name[cell.value] = cell.column_letter
-            pprint(col_name)
-        else:
-            data_row = {}
-            for name, letter in col_name.items():
-                data_row[name] = ws[f'{letter}{idx_row}'].value
-            data.append(data_row)
-    pprint(data)
+        self.col_name = {
+            "Descr. Sint.": None,
+            "Dt.Aquisicao": None,
+            "Quantidade": None,
+            "Tipo Ativo": None,
+        }
+        self.data = []
+
+    def process(self):
+        self.wb = load_workbook(filename=self.filename)
+        self.ws = self.wb.active
+
+        for idx_row, row in enumerate(self.ws.iter_rows(max_row=5), start=1):
+            if idx_row == 1:
+                for cell in row:
+                    if cell.value in self.col_name:
+                        self.col_name[cell.value] = cell.column_letter
+                pprint(self.col_name)
+            else:
+                data_row = {}
+                for name, letter in self.col_name.items():
+                    data_row[name] = self.ws[f'{letter}{idx_row}'].value
+                self.data.append(data_row)
+        pprint(self.data)
+    
 
 
 if __name__ == '__main__':
-    main()
+    EquiqXlsx('equipamentos.xlsx').process()
