@@ -1,7 +1,7 @@
 # opyxl_tst
-O objetivo deste repositório é testar os recursos básicos da biblioteca openpyxl.
+O objetivo deste projeto é testar os recursos básicos da biblioteca **openpyxl**.
 
-É desenvolvido um programa que acessa os dados em um arquivo ".xlsx", processa-os e grava o resultado em outro arquivo ".xlsx".
+`opyxl.py` acessa os dados em um arquivo ".xlsx", processa-os e grava o resultado em outro arquivo ".xlsx".
 
 # Origem da planilha utilizada
 
@@ -45,3 +45,20 @@ Planilha criada:
 - Apresenta totais de equipamentos adquiridos em uma grade por ano (coluna) e classe (linha)
 - Apresenta formatações simples como alinhamento e negrito
 - Totaliza os dados por ano e por classe
+
+# Ambiente
+
+Utilizando Python 3.11
+
+Em um ambiente virtualizado, instalada a **openpyxl** com o seguinte comando:
+
+`pip install openpyxl`
+
+Verificação do instalado:
+
+`pip freeze`
+
+```
+et-xmlfile==1.1.0
+openpyxl==3.1.5
+```
