@@ -20,6 +20,8 @@ class EquiqXlsx:
             self.TIPO: None,
         }
         self.destination = {}
+        self.tags = []
+        self.anos = []
         self.info_recipe = {
             'key':(
                 {
@@ -132,10 +134,22 @@ class EquiqXlsx:
     def print(self):
         pprint(self.destination)
         print(sum(self.destination.values()), 'itens')
+        pprint(self.tags)
+        pprint(self.anos)
+
+    def get_tags_anos(self):
+        tags = set()
+        anos = set()
+        for tag, ano in self.destination:
+            tags.add(tag)
+            anos.add(ano)
+        self.tags = sorted(list(tags))
+        self.anos = sorted(list(anos))
 
     def process(self):
         self.load()
         self.walk_through()
+        self.get_tags_anos()
         self.print()
 
 
