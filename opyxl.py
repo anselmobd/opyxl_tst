@@ -40,11 +40,34 @@ class EquiqXlsx:
             'MATRICIAL': 'matricial',
             'SERVIDOR': 'servidor',
             'MICROCOMPUTADOR': 'desktop',
+            'DESKTOP': 'desktop',
+            'COMPUTADOR': 'desktop',
             'PROJETOR': 'projetor',
             'MONITOR': 'monitor',
+            'NOTEBOOK': 'notebook',
+            'ULTRABOOK': 'notebook',
+            'MACBOOK': 'notebook',
+            'APPLE MAC': 'notebook',
+            'ETIQUETA': 'termica',
+            'SCANNER': 'scanner',
+            'NOBREAK': 'nobreak',
+            'FIREWALL': 'firewall',
+            'CPAC': 'firewall',
+            'SECURITY': 'firewall',
+            'SANDBLAST': 'firewall',
+            'ACESS PONTS': 'ap',
+            'NCOMPUTING': 'ncomputing',
+            'STORAGE': 'storage',
+            'BACKUP': 'storage',
+            'SWITCH': 'switch',
+            'SWICH': 'switch',
+            'TRANSCEIVER': 'transceiver',
+            'IPAD': 'tablet',
+            'TABLET': 'tablet',
+            'CAMERA': 'camera',
             None: 'outros',
         }
-        self.max_row=25
+        self.max_row=None
 
     def get_tag_descricao(self, value):
         for search, tag in self.tags.items():
@@ -108,6 +131,7 @@ class EquiqXlsx:
 
     def print(self):
         pprint(self.destination)
+        print(sum(self.destination.values()), 'itens')
 
     def process(self):
         self.load()
