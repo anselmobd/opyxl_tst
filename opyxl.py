@@ -19,7 +19,6 @@ class EquiqXlsx:
             self.QUANT: None,
             self.TIPO: None,
         }
-        self.origin_data = []
         self.destination = {}
         self.info_recipe = {
             'key':(
@@ -75,12 +74,10 @@ class EquiqXlsx:
                 value = recipe['transform'](value)
             return value
 
-    def mount_destination(self):
-        for row in self.origin_data:
-            key = self.mount_info(self.info_recipe['key'], row)
-            value = self.mount_info(self.info_recipe['value'], row)
-            self.info_recipe['apply'](key, value)
-        return 1
+    def apply_destination_info(self, row):
+        key = self.mount_info(self.info_recipe['key'], row)
+        value = self.mount_info(self.info_recipe['value'], row)
+        self.info_recipe['apply'](key, value)
 
     def load(self):
         self.wb = load_workbook(filename=self.filename)
@@ -90,13 +87,12 @@ class EquiqXlsx:
         for idx_col, cell in enumerate(row):
             if cell.value in self.origin_columns_idx:
                 self.origin_columns_idx[cell.value] = idx_col
-        pprint(self.origin_columns_idx)
 
     def data_append_item(self, idx_row, row):
         item = {}
         for name, idx_col in self.origin_columns_idx.items():
             item[name] = row[idx_col].value
-        self.origin_data.append(item)
+        self.apply_destination_info(item)
 
     def item_valido(self, row):
         return not row[self.origin_columns_idx['Tipo Ativo']].value
@@ -111,13 +107,11 @@ class EquiqXlsx:
                     self.data_append_item(idx_row, row)
 
     def print(self):
-        pprint(self.origin_data)
         pprint(self.destination)
 
     def process(self):
         self.load()
         self.walk_through()
-        self.mount_destination()
         self.print()
 
 
