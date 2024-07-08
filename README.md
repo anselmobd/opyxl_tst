@@ -62,3 +62,19 @@ Verificação do instalado:
 et-xmlfile==1.1.0
 openpyxl==3.1.5
 ```
+
+## Baixando e executando o programa
+
+Download deste repositório
+
+`git clone https://github.com/anselmobd/opyxl_tst.git`
+
+Para executar o programa:
+
+`python opyxl.py`
+
+# Resultado
+
+Segue uma visualização da planilha criada ao ser executado o `opyxl.py`:
+
+![Planilha de análise](analise.png)
