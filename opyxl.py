@@ -153,7 +153,7 @@ class EquiqXlsx:
         self.anos = sorted(list(anos))
 
     def set_tags(self):
-        tags = ['Tag \ Ano'] + self.tags + ['Totais']
+        tags = ['Rótulo \ Ano'] + self.tags + ['Totais']
         max_length = 0
         for line, tag in enumerate(tags, start=1):
             max_length = max(len(tag), max_length)
